@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
+
 template <typename T>
-struct node {
+class node {
+public:
 	T value;
-	struct node* left;
-	struct node* right;
+	node<T>* left;
+	node<T>* right;
 };
 
 template <typename T>
@@ -13,34 +15,34 @@ class BinaryTree
 public:
 	BinaryTree<T>(T object);
 	~BinaryTree();
-	node* get_primary_node();
-	void insert_integer(struct node* tree, T object);
-	void print_tree(struct node* tree);
-	void terminate_tree(struct node* tree);
-	bool Search(struct node* leaf, T value) const;
+	node<T>* get_primary_node();
+	void insert_integer(node<T>* tree, T object);
+	void print_tree(node<T>* tree);
+	void terminate_tree(node<T>* tree);
+	bool Search(node<T>* leaf, T value) const;
 private:
-	node* primaryNode;
+	node<T>* primaryNode;
 };
 
 template <typename T>
 BinaryTree<T>::BinaryTree(T value)
 {
-	primaryNode = new node();
+	primaryNode = new node<T>();
 	primaryNode->value = value;
 	primaryNode->left = NULL;
 	primaryNode->right = NULL;
 }
 
 template <typename T>
-node* BinaryTree<T>::get_primary_node() {
+node<T>* BinaryTree<T>::get_primary_node() {
 	return primaryNode;
 }
 
 template <typename T>
-void BinaryTree<T>::insert_integer(struct node* leaf, T value) {
+void BinaryTree<T>::insert_integer(node<T>* leaf, T value) {
 	if (value < leaf->value) {
 		if (leaf->left == NULL) {
-			leaf->left = new node();
+			leaf->left = new node<T>();
 			leaf->left->value = value;
 			leaf->left->left = NULL;
 			leaf->left->right = NULL;
@@ -51,7 +53,7 @@ void BinaryTree<T>::insert_integer(struct node* leaf, T value) {
 	}
 	else {
 		if (leaf->right == NULL) {
-			leaf->right = new node();
+			leaf->right = new node<T>();
 			leaf->right->value = value;
 			leaf->right->left = NULL;
 			leaf->right->right = NULL;
@@ -63,7 +65,7 @@ void BinaryTree<T>::insert_integer(struct node* leaf, T value) {
 }
 
 template <typename T>
-void BinaryTree<T>::print_tree(struct node* leaf) {
+void BinaryTree<T>::print_tree(node<T>* leaf) {
 	if (leaf->left != NULL)
 		print_tree(leaf->left);
 
@@ -74,7 +76,7 @@ void BinaryTree<T>::print_tree(struct node* leaf) {
 }
 
 template <typename T>
-void BinaryTree<T>::terminate_tree(struct node* leaf) {
+void BinaryTree<T>::terminate_tree(node<T>* leaf) {
 	if (leaf != NULL) {
 		terminate_tree(leaf->left);
 		terminate_tree(leaf->right);
@@ -84,7 +86,7 @@ void BinaryTree<T>::terminate_tree(struct node* leaf) {
 }
 
 template <typename T>
-bool BinaryTree<T>::Search(struct node* leaf, T value) const {
+bool BinaryTree<T>::Search(node<T>* leaf, T value) const {
 	if (leaf != NULL) {
 		if (value == leaf->value) {
 			return true;
