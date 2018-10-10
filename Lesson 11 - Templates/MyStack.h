@@ -25,7 +25,18 @@ MyStack<T>::~MyStack() {
 
 template <typename T>
 void MyStack<T>::Push(T item) {
+	T** newValues = new T*[Size() + 1];
 
+	for (int i = 0; i < arraySize; i++)
+	{
+		newValues[i] = values[i];
+		delete values[i];
+	}
+	delete values;
+
+	newValues[Size() - 1] = new T*(item);
+
+	values = newValues;
 }
 
 template <typename T>
