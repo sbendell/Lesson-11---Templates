@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Matrix.h"
 #include "BinaryTree.h"
+#include "MyStack.h"
 
 using namespace std;
 
@@ -45,6 +46,28 @@ int main()
 
 	cout << "\n\n\nTree of characters: \n";
 	treeChar.print_tree(treeChar.get_primary_node());
+
+	MyStack<int> stackInt;
+	stackInt.Push(6);
+	stackInt.Push(5);
+	stackInt.Push(4);
+	stackInt.Push(3);
+
+	cout << "\n\n\nStack of Ints:\n" << stackInt.Pop() << "\n";
+	cout << stackInt.Pop() << "\n";
+	cout << stackInt.Pop() << "\n";
+	cout << stackInt.Pop() << "\n\n\n\n";
+
+	MyStack<char> stackChar;
+	stackChar.Push('d');
+	stackChar.Push('c');
+	stackChar.Push('b');
+	stackChar.Push('a');
+
+	cout << "\n\n\nStack of Chars:\n" << stackChar.Pop() << "\n";
+	cout << stackChar.Pop() << "\n";
+	cout << stackChar.Pop() << "\n";
+	cout << stackChar.Pop() << "\n\n\n\n";
 
 	int x;
 	cin >> x;
