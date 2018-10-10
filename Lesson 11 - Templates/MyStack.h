@@ -41,7 +41,7 @@ void MyStack<T>::Push(T item) {
 
 template <typename T>
 void MyStack<T>::Pop() {
-
+	delete values[Size() - 1];
 }
 
 template <typename T>
