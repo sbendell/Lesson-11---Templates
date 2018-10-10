@@ -51,6 +51,9 @@ int MyStack<T>::Size() {
 
 template <typename T>
 bool MyStack<T>::Empty() {
-
+	if (sizeof(values) == 0)
+		return true;
+	else
+		return false;
 }
 
