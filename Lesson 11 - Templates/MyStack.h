@@ -35,7 +35,7 @@ void MyStack<T>::Pop() {
 
 template <typename T>
 int MyStack<T>::Size() {
-
+	return sizeof(values) / sizeof(T);
 }
 
 template <typename T>
