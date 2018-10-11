@@ -2,8 +2,7 @@
 #include <iostream>
 
 template <typename T>
-class node {
-public:
+struct node {
 	T value;
 	node<T>* left;
 	node<T>* right;
